@@ -3,8 +3,9 @@ import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { userActions } from '../actions';
+import { connect } from 'react-redux';
 
-export default class LoginPage extends React.Component {
+class LoginPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -67,3 +68,12 @@ export default class LoginPage extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    const { loggingIn } = state.authentication;
+    return {
+        loggingIn
+    };
+}
+
+export default connect(mapStateToProps)(LoginPage);

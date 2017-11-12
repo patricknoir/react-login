@@ -1,24 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import NavBar from './components/NavBar';
-import LoginPage from './containers/LoginPage';
+import { Provider } from 'react-redux';
+import App from './containers/App';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { store } from './helpers';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-
-//import logger from "redux-logger";
-//import { applyMiddleware, createStore } from "redux";
-
-// const store = createStore(reducers, applyMiddleware(logger()))
-
-
 render(
-    <MuiThemeProvider>
-        <LoginPage />
-    </MuiThemeProvider>,
+    <Provider store={store}>
+        <MuiThemeProvider>
+            <App />
+        </MuiThemeProvider>
+    </Provider>,
     document.getElementById("app")
 );
